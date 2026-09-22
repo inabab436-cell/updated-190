@@ -1,0 +1,10 @@
+{
+  "source": "github: https://github.com/inabab436-cell/updated-189.git",
+  "capabilities": [
+    { "capability": "Full TanStack Start app (CUPAI AI commerce assistant)", "source": "repo src/", "outcome": "copied", "status": "verified", "next_action": null },
+    { "capability": "Database schema (60+ migrations, external Supabase)", "source": "repo db/", "outcome": "preserve external provider", "status": "pending-user-secrets", "next_action": "User adds CUPAI_APP_SB_SERVICE; CUPAI_APP_SB_URL and CUPAI_APP_SB_ANON already saved" },
+    { "capability": "Lovable AI Gateway chat/vision", "source": "src/lib/*.server.ts", "outcome": "uses built-in LOVABLE_API_KEY defaults", "status": "implemented", "next_action": null },
+    { "capability": "Session signing", "source": "CUPAI_APP_SESSION_SECRET", "outcome": "generated", "status": "verified", "next_action": null },
+    { "capability": "Existing data rows", "source": "external Supabase project", "outcome": "preserved in place (app points at same Supabase URL)", "status": "pending-user-secrets", "next_action": "No import needed once the three Supabase keys are set" }
+  ]
+}
