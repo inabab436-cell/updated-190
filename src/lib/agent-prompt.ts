@@ -33,6 +33,12 @@
  * a new section object. Do not restate an existing rule somewhere else.
  */
 
+import {
+  buildPersonaRules,
+  DEFAULT_AGENT_PERSONA,
+  type AgentPersona,
+} from "@/lib/agent-persona";
+
 export type AgentPromptSection = {
   /** Stable id, used for ordering and for targeted edits. */
   id: string;
@@ -487,14 +493,23 @@ function renderSection(section: AgentPromptSection): string {
  * followed by the live inventory data block (always last so the freshest
  * store data sits closest to the conversation).
  */
-export function buildAgentPrompt(inventoryText?: string): string {
+export function buildAgentPrompt(
+  inventoryText?: string,
+  persona?: AgentPersona,
+): string {
   const header = [
     "SYSTEM INSTRUCTIONS — fixed, authored by the store operator.",
     "They are organised as numbered sections; each rule belongs to exactly one section and none of them cancels another.",
-    "Sections 1-13 are behaviour. Section 14 is live store data.",
+    "Section 0 fixes who you are. Sections 1-13 are behaviour. Section 14 is live store data.",
   ].join("\n");
 
-  const body = AGENT_PROMPT_SECTIONS.map(renderSection).join("\n\n");
+  const personaSection = renderSection({
+    id: "persona",
+    title: "0. YOUR NAME AND YOUR GENDER (highest priority)",
+    rules: buildPersonaRules(persona ?? DEFAULT_AGENT_PERSONA),
+  });
+
+  const body = [personaSection, ...AGENT_PROMPT_SECTIONS.map(renderSection)].join("\n\n");
 
   const inventory = inventoryText
     ? [
