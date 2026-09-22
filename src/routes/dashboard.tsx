@@ -6,7 +6,6 @@ import {
   Bell, CreditCard, AlertTriangle, ShoppingBag, Check, HelpCircle,
   MessagesSquare, Clock4, BadgePercent, ChevronDown, LifeBuoy,
   ShieldAlert, MailCheck, TrendingUp, Bot, Settings2, Users,
-  Bot,
 } from "lucide-react";
 import { toast } from "sonner";
 
