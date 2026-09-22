@@ -69,7 +69,7 @@ function AgentPersonaPage() {
             <ArrowLeft className="h-4 w-4 rotate-180" />
             رجوع
           </Link>
-          <img src={logo.src} alt="" className="h-8 w-auto" />
+          <img src={logo.url} alt="cupai" className="h-8 w-auto" />
         </div>
 
         <div className="mb-6 flex items-start gap-3">

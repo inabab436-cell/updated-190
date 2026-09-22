@@ -6,6 +6,7 @@ import {
   Bell, CreditCard, AlertTriangle, ShoppingBag, Check, HelpCircle,
   MessagesSquare, Clock4, BadgePercent, ChevronDown, LifeBuoy,
   ShieldAlert, MailCheck, TrendingUp, Bot, Settings2, Users,
+  Bot,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -212,6 +213,15 @@ function DashboardPage() {
                 <MailCheck className="h-5 w-5" />
               </span>
               <span className="min-w-0 flex-1 text-sm font-semibold">إشعارات البريد</span>
+              <ArrowLeft className="h-4 w-4 shrink-0 text-muted-foreground" />
+            </Link>
+            )}
+            {can("settings") && (
+            <Link to="/settings/agent" className="hub-card flex items-center gap-3 p-4">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-muted text-foreground">
+                <Bot className="h-5 w-5" />
+              </span>
+              <span className="min-w-0 flex-1 text-sm font-semibold">اسم وجنس الوكيل</span>
               <ArrowLeft className="h-4 w-4 shrink-0 text-muted-foreground" />
             </Link>
             )}
